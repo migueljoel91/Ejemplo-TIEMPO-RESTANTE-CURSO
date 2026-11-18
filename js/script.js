@@ -46,24 +46,20 @@ function calcularRestanteAplazamiento() {
         meses = meses - 1;
         dias = dias + 30;
     }
-    if (APLAZAMIENTO >= 30) {
-        meses = meses + Math.floor(APLAZAMIENTO / 30);
-        dias = dias - 30 * Math.floor(APLAZAMIENTO / 30);
-    }
 
     if (dias >= 30) {
-        meses = meses + 1;
-        dias = dias - 30;
-    }
-
-    if (meses < 0) {
-        anyos = anyos - 1;
-        meses = meses + 12;
+        meses = meses + Math.floor(dias / 30);
+        dias = dias % 30;
     }
 
     if (meses >= 12) {
         anyos = anyos + Math.floor(meses / 12);
         meses = meses % 12;
+    }
+
+    if (meses < 0) {
+        anyos = anyos - 1;
+        meses = meses + 12;
     }
 
     document.getElementById('resultadoAplazamiento').textContent =
